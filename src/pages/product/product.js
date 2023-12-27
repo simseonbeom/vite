@@ -1,6 +1,6 @@
 import '/src/pages/product/product.css';
 import { tiger, insertLast, comma, getPbImageURL } from '/src/lib';
-
+import gsap from "gsap";
 
 
 async function renderProduct() {
@@ -31,6 +31,10 @@ async function renderProduct() {
     `;
     insertLast('.container > ul', template);
   });
+
+
+  gsap.from('.product-item',{y:30,opacity:0,stagger:0.1})
+  
 }
 
 
