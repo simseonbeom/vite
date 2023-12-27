@@ -1,21 +1,30 @@
 import '/src/pages/product/product.css';
-import { tiger, insertLast, comma, getPbImageURL } from '/src/lib';
+import { tiger, insertLast, comma, getPbImageURL, getStorage, setStorage,setDocumentTitle } from '/src/lib';
 import gsap from "gsap";
+import defaultAuthData from '/src/api/defaultAuthData';
 
+
+setDocumentTitle('2.9cm / 상품 목록')
+
+
+if(!localStorage.getItem('auth')){
+  setStorage('auth',defaultAuthData)
+}
 
 async function renderProduct() {
   const response = await tiger.get(
     `${import.meta.env.VITE_PB_API}/collections/products/records`
   );
-  
-  
+
   const userData = response.data.items;
+
+  const {isAuth} = await getStorage('auth');
 
   userData.forEach((item) => {
     const ratio = item.price * (item.discount * 0.01);
     const template = /* html */`
       <li class="product-item">
-        <a href="/">
+      <a href="${!isAuth ? '/src/pages/login/' : `/src/pages/detail/index.html#${item.id}`}">
           <figure>
             <img src="${getPbImageURL(item)}" alt="" />
           </figure>

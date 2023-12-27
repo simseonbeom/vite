@@ -6,7 +6,6 @@ import { getNode, getStorage, insertLast, deleteStorage } from '/src/lib/';
 import '/src/styles/style.css';
 
 
-
 const tl = gsap.timeline();
 
 tl.from('.visual',{ opacity:0, y:30, })

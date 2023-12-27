@@ -1,9 +1,11 @@
 
-import { getNode, getStorage, setStorage } from '/src/lib/';
+import { getNode, getStorage, setStorage, setDocumentTitle } from '/src/lib/';
 import '/src/pages/login/login.css';
 import pb from '/src/api/pocketbase';
 import gsap from "gsap";
 
+
+setDocumentTitle('2.9cm / 로그인')
 
 const loginButton = getNode('.login');
 
