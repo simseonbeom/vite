@@ -5,6 +5,8 @@ module.exports = {
   // ex: <div
   //       id="unique-id"
   //       class="contaienr"
+
+  
   //     >
   htmlWhitespaceSensitivity: 'css',
   bracketSameLine: false,
