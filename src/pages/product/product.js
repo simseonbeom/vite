@@ -1,33 +1,46 @@
 import '/src/pages/product/product.css';
-import { tiger, insertLast } from '/src/lib';
+import { tiger, insertLast, comma, getPbImageURL } from '/src/lib';
+
+
 
 async function renderProduct() {
   const response = await tiger.get(
-    'http://127.0.0.1:8090/api/collections/products/records'
+    `${import.meta.env.VITE_PB_API}/collections/products/records`
   );
-
+  
   const userData = response.data.items;
 
   userData.forEach((item) => {
-    const template = `
+    const ratio = item.price * (item.discount * 0.01);
+    const template = /* html */`
       <li class="product-item">
         <a href="/">
           <figure>
-            <img src="/src/assets/thumb.jpg" alt="" />
+            <img src="${getPbImageURL(item)}" alt="" />
           </figure>
-          <span class="brand">링서울</span>
-          <span class="desc">[29CM단독]_[15%] handmade wool trench coat(5color)</span>
-          <span class="price">399,000</span>
+          <span class="brand">${item.brand}</span>
+          <span class="desc">${item.description}</span>
+          <span class="price">${item.price}</span>
           <div>
-            <span class="discount">15%</span>
-            <span class="real-price">250,000원</span>
+            <span class="discount">${item.discount}%</span>
+            <span class="real-price">${comma(item.price - ratio)}원</span>
           </div>
         </a>
       </li>
     `;
-    // insertLast('.container', template);
+    insertLast('.container > ul', template);
   });
 }
 
 
 renderProduct();
+
+
+
+
+
+
+
+
+
+
