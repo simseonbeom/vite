@@ -39,6 +39,20 @@
 }
 
 
+.userName{
+  margin-top: 2rem;
+}
+
+.logout{
+  padding: 0.3rem 1rem;
+  border: 1px solid black;
+  transition: all .2s;
+}
+
+.logout:hover{
+  background:black;
+  color: white
+}
 
 
 

@@ -8,6 +8,7 @@ async function renderProduct() {
     `${import.meta.env.VITE_PB_API}/collections/products/records`
   );
   
+  
   const userData = response.data.items;
 
   userData.forEach((item) => {
