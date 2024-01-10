@@ -1,0 +1,1 @@
+import{g as t,a}from"./delay-qO0Dxm4Y.js";import{p as e}from"./pocketbase-mPIszQIG.js";import{d as i}from"./storage--8WsE0oY.js";const r=t.timeline();r.from(".visual",{opacity:0,y:30}).from("h2 > span",{opacity:0,x:-30,stagger:.2});const o=a(".logout");o&&o.addEventListener("click",()=>{e.authStore.clear(),i("auth"),window.location.reload()});
